@@ -51,7 +51,7 @@ body {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    background-color: #e1dbf0;
+    background-color: #cdbbdc;
     color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
@@ -61,7 +61,7 @@ body {
 }
 
 #choices button:hover {
-    background-color: #cbbee0;
+    background-color: #c7a4d6;
 }
 
 #restart {
