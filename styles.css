@@ -1,0 +1,108 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #e1e3ea;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#background {
+    background-color: #ededed;
+    width: 60%; /* Adjust width as needed */
+    max-width: 500px; /* Max width to limit size on large screens */
+    height: 90%; /* Adjust height as needed */
+    max-height: 700px; /* Max height to limit overflow */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent overflow */
+}
+
+#story-image {
+    width: 400px; /* Fixed width */
+    height: 300px; /* Fixed height */
+    object-fit: cover; /* Cover the area without distortion */
+    border-radius: 15px;
+    margin: 0 auto 15px auto;
+}
+
+#story-text {
+    text-align: left; /* Add this line */
+    margin-top: 20px; /* Increased top margin */
+    font-size: 16px;
+    color: #333;
+    padding: 0 10px; /* Added horizontal padding */
+}
+
+#choices {
+    margin-top: 20px;
+}
+
+#choices button {
+    font-family: 'Poppins', sans-serif;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #e1dbf0;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#choices button:hover {
+    background-color: #cbbee0;
+}
+
+#restart {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#restart button {
+    font-family: 'Poppins', sans-serif;
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #89bd8b; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#restart button:hover {
+    background-color: #5a775b;
+}
+
+
+#story-container {
+    width: 80%;
+    margin: 40px auto;
+    text-align: center;
+  }
+
+  #story-container {
+    position: relative;
+  }
+  
+  #story-container img[alt="back"] {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+  }
+
+  
