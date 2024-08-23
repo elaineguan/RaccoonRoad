@@ -1,7 +1,7 @@
 const storyData = {
     start: {
         image: 'images/start.JPG',
-        text: 'Meet Taro, a raccoon who recently landed his first full-time job as a barista at a milk tea shop! He just recieved his first paycheck and wonders how he should use it.',
+        text: 'Meet Taro, a raccoon who recently landed his first full-time job as a barista at a milk tea shop! He just received his first paycheck and wonders how he should use it.',
         options: [
             { text: 'Continue', next: 'suki' },
         ]
@@ -17,7 +17,7 @@ const storyData = {
         image: 'images/explaink.JPG',
         text: 'Suki explains, "A 401(k) is a retirement savings plan where you can put some of your paycheck away before taxes. It grows over time, and our employer even matches some of the money you save!"',
         options: [
-            { text: "Tell me more about 401(k)", next: 'morek' },
+            { text: "Tell me more about the 401(k)", next: 'morek' },
         ]
     },
     morek: {
@@ -25,7 +25,7 @@ const storyData = {
         text: '"When you contribute to a 401(k), you lower your taxable income, and the money grows tax-deferred, which means you don’t pay taxes until you withdraw it in retirement."',
         options: [
             { text: 'What happens when I take the money out?', next: 'takemoneyk' },
-            { text: 'How much can I contribute a year?', next: 'contributek' },
+            { text: 'How much can I contribute per year?', next: 'contributek' },
             { text: 'What does it mean when my employer matches some of my contributions?', next: 'employerk' },
         ]
     },
@@ -259,14 +259,31 @@ function choose(option) {
     updateStory(nextPath);
 }
 
+// Preload images for faster access
+const preloadImages = (imageUrls) => {
+    imageUrls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+    });
+};
+
+// Get all image URLs from the storyData to preload
+const allImageUrls = Object.values(storyData).map(story => story.image);
+preloadImages(allImageUrls);
+
 function updateStory(path) {
     const story = storyData[path];
-    document.querySelector('#story-image').src = story.image;
-    document.querySelector('#story-text').innerText = story.text;  // Update the text
-    document.querySelector('#story-image').dataset.currentPath = path;
-
+    const storyImage = document.querySelector('#story-image');
+    const storyText = document.querySelector('#story-text');
     const choicesDiv = document.querySelector('#choices');
-    choicesDiv.innerHTML = ''; // Clear previous options
+
+    // Update image and text
+    storyImage.src = story.image;
+    storyText.innerText = story.text;
+    storyImage.dataset.currentPath = path;
+
+    // Clear previous options
+    choicesDiv.innerHTML = '';
 
     if (story.options.length === 0) {
         // Hide choices and show restart button if story ends
@@ -277,6 +294,7 @@ function updateStory(path) {
         choicesDiv.style.display = 'block';
         document.querySelector('#restart').style.display = 'none';
 
+        // Add new option buttons
         story.options.forEach((option, index) => {
             const button = document.createElement('button');
             button.textContent = option.text;
@@ -285,40 +303,42 @@ function updateStory(path) {
         });
 
         // Add "Back" image button at the top left of the screen
-const backButton = document.createElement('img');
-backButton.src = 'images/back.png';
-backButton.style.cursor = 'pointer';
-backButton.style.position = 'fixed';
-backButton.style.top = '10px'; // Place the button at the top of the screen
-backButton.style.left = '10px'; // Place the button at the left of the screen
-backButton.style.width = '50px'; // Make the image smaller
-backButton.style.zIndex = '1000'; // Ensure the button stays on top of other elements
-backButton.onclick = () => {
-    const currentPath = document.querySelector('#story-image').dataset.currentPath;
-    const previousPath = Object.keys(storyData).find(key => storyData[key].options.some(option => option.next === currentPath));
-    updateStory(previousPath);
-};
+        let backButton = document.querySelector('img[src="images/back.png"]');
+        if (backButton) {
+            backButton.remove(); // Remove existing back button if any
+        }
+        backButton = document.createElement('img');
+        backButton.src = 'images/back.png';
+        backButton.style.cursor = 'pointer';
+        backButton.style.position = 'fixed';
+        backButton.style.top = '10px';
+        backButton.style.left = '10px';
+        backButton.style.width = '50px';
+        backButton.style.zIndex = '1000';
+        backButton.onclick = () => {
+            const currentPath = storyImage.dataset.currentPath;
+            const previousPath = Object.keys(storyData).find(key => 
+                storyData[key].options.some(option => option.next === currentPath));
+            updateStory(previousPath);
+        };
 
-// Add "Home" image button next to the back button
-const homeButton = document.createElement('img');
-homeButton.src = 'images/home.png';
-homeButton.style.cursor = 'pointer';
-homeButton.style.position = 'fixed';
-homeButton.style.top = '10px'; // Place the button at the top of the screen
-homeButton.style.left = '80px'; // Place the button 50px to the right of the back button
-homeButton.style.width = '50px'; // Make the image smaller
-homeButton.onclick = () => {
-    goToHome();
-};
+        // Add "Home" image button next to the back button
+        let homeButton = document.querySelector('img[src="images/home.png"]');
+        if (homeButton) {
+            homeButton.remove(); // Remove existing home button if any
+        }
+        homeButton = document.createElement('img');
+        homeButton.src = 'images/home.png';
+        homeButton.style.cursor = 'pointer';
+        homeButton.style.position = 'fixed';
+        homeButton.style.top = '10px';
+        homeButton.style.left = '80px';
+        homeButton.style.width = '50px';
+        homeButton.onclick = () => goToHome();
 
-// Remove any existing back button before adding a new one
-const existingBackButton = document.querySelector('img[src="images/back.png"]');
-if (existingBackButton) {
-    existingBackButton.remove();
-}
-
-document.body.appendChild(backButton); // Add the back button to the body element
-document.body.appendChild(homeButton); // Add the home button to the body element
+        // Add buttons to the body
+        document.body.appendChild(backButton);
+        document.body.appendChild(homeButton);
     }
 }
 
