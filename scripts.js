@@ -86,7 +86,7 @@ const storyData = {
 
     contributeroth: {
         image: 'images/contributeroth.jpg',
-        text: "\"For 2024, you can contribute up to $6,500 to a Roth IRA. If you’re 50 or older, you can add an extra $1,000 in catch-up contributions, making the total $7,500. Do you have any other questions?\"",
+        text: "\"For 2024, you can contribute up to $7,000 to a Roth IRA. If you’re 50 or older, you can add an extra $1,000 in catch-up contributions, making the total $8,000. Do you have any other questions?\"",
         options: [
             { text: 'What if I need the money before retirement?', next: 'takemoneyroth' },
             { text: "Can I contribute to a Roth IRA if I have a 401(k)?", next: 'both' },
@@ -237,7 +237,7 @@ const storyData = {
 
     reviewr: {
         image: 'images/reviewr.jpg',
-        text: "A Roth IRA is a retirement account funded with after-tax dollars, allowing your investments to grow tax-free, and withdrawals in retirement are tax-free too. You can contribute up to $6,500 annually in 2024, with higher limits if you're 50 or older, though income limits may apply. You can invest in a variety of assets, and while you can withdraw contributions anytime without penalties, earnings should stay in until at least 59½ to avoid taxes and penalties.",
+        text: "A Roth IRA is a retirement account funded with after-tax dollars, allowing your investments to grow tax-free, and withdrawals in retirement are tax-free too. You can contribute up to $7,000 annually in 2024, with higher limits if you're 50 or older, though income limits may apply. You can invest in a variety of assets, and while you can withdraw contributions anytime without penalties, earnings should stay in until at least 59½ to avoid taxes and penalties.",
         options: [
         { text: 'Review 401(k)', next: 'reviewk' },
         { text: 'Finish', next: 'ending' },
