@@ -158,7 +158,7 @@ const storyData = {
 
     getstartedr: {
         image: 'images/getstartedr.png',
-        text: '"Starting a Roth IRA is straightforward! First, choose a brokerage firm or financial institution. Look for one with low fees and a variety of investment options, like Charles Schwab or Fidelity. You can open the account online, which usually only takes a few minutes"',
+        text: '"Starting a Roth IRA is straightforward! First, choose a brokerage firm or financial institution. Look for one with low fees and a variety of investment options, like Robinhood, Charles Schwab, or Fidelity. You can open the account online, which usually only takes a few minutes"',
         options: [
         { text: 'Continue', next: 'whatnextr' },
         ]
