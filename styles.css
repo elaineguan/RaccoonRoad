@@ -10,11 +10,12 @@ body {
 }
 
 #background {
+    position: relative; /* Ensure buttons are positioned relative to this container */
     background-color: #ededed;
-    width: 60%; /* Adjust width as needed */
-    max-width: 500px; /* Max width to limit size on large screens */
-    height: 90%; /* Adjust height as needed */
-    max-height: 700px; /* Max height to limit overflow */
+    width: 60%;
+    max-width: 500px;
+    height: 90%;
+    max-height: 700px;
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -22,23 +23,62 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Prevent overflow */
+    overflow: hidden;
+}
+
+/* Ensure the story container is positioned relative */
+#story-container {
+    position: relative;
+}
+
+/* Position back and home buttons at the top left of the story container */
+#background img.back-button, 
+#background img.home-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+/* Slightly move the home button to the right of the back button */
+#background img.home-button {
+    left: 60px; /* Adjust this value to space the buttons apart */
+}
+
+/* Hover effect for back and home buttons */
+#background img.back-button:hover,
+#background img.home-button:hover {
+    transform: scale(1.1);
+}
+
+
+
+#story-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #story-image {
-    width: 400px; /* Fixed width */
-    height: 300px; /* Fixed height */
-    object-fit: cover; /* Cover the area without distortion */
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
     border-radius: 15px;
     margin: 0 auto 15px auto;
 }
 
 #story-text {
-    text-align: left; /* Add this line */
-    margin-top: 20px; /* Increased top margin */
+    text-align: left;
+    margin-top: 20px;
     font-size: 16px;
     color: #333;
-    padding: 0 10px; /* Added horizontal padding */
+    padding: 0 10px;
 }
 
 #choices {
@@ -76,7 +116,7 @@ body {
     margin: 10px auto;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #89bd8b; /* Green */
+    background-color: #89bd8b;
     color: white;
     border: none;
     border-radius: 5px;
@@ -87,22 +127,20 @@ body {
     background-color: #5a775b;
 }
 
-
-#story-container {
-    width: 80%;
-    margin: 40px auto;
-    text-align: center;
-  }
-
-  #story-container {
-    position: relative;
-  }
-  
-  #story-container img[alt="back"] {
+#nav-buttons {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
-    width: 50px;
-  }
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
 
-  
+#nav-buttons img {
+    width: 40px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#nav-buttons img:hover {
+    transform: scale(1.1); /* Slightly increase size on hover */
+}

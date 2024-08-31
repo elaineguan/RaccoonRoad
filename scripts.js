@@ -302,19 +302,14 @@ function updateStory(path) {
             choicesDiv.appendChild(button);
         });
 
-        // Add "Back" image button at the top left of the screen
-        let backButton = document.querySelector('img[src="images/back.png"]');
+        // Add "Back" button at the top left of the story container
+        let backButton = document.querySelector('img.back-button');
         if (backButton) {
             backButton.remove(); // Remove existing back button if any
         }
         backButton = document.createElement('img');
         backButton.src = 'images/back.png';
-        backButton.style.cursor = 'pointer';
-        backButton.style.position = 'fixed';
-        backButton.style.top = '10px';
-        backButton.style.left = '10px';
-        backButton.style.width = '50px';
-        backButton.style.zIndex = '1000';
+        backButton.classList.add('back-button'); // Add class to back button
         backButton.onclick = () => {
             const currentPath = storyImage.dataset.currentPath;
             const previousPath = Object.keys(storyData).find(key => 
@@ -322,25 +317,23 @@ function updateStory(path) {
             updateStory(previousPath);
         };
 
-        // Add "Home" image button next to the back button
-        let homeButton = document.querySelector('img[src="images/home.png"]');
+        // Add "Home" button next to the back button
+        let homeButton = document.querySelector('img.home-button');
         if (homeButton) {
             homeButton.remove(); // Remove existing home button if any
         }
         homeButton = document.createElement('img');
         homeButton.src = 'images/home.png';
-        homeButton.style.cursor = 'pointer';
-        homeButton.style.position = 'fixed';
-        homeButton.style.top = '10px';
-        homeButton.style.left = '80px';
-        homeButton.style.width = '50px';
+        homeButton.classList.add('home-button'); // Add class to home button
         homeButton.onclick = () => goToHome();
 
-        // Add buttons to the body
-        document.body.appendChild(backButton);
-        document.body.appendChild(homeButton);
+        // Append buttons to the story container
+        document.querySelector('#story-container').appendChild(backButton);
+        document.querySelector('#story-container').appendChild(homeButton);
     }
 }
+
+
 
 
 function restartStory() {

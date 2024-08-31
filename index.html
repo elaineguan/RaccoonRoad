@@ -10,14 +10,22 @@
 </head>
 <body>
     <div id="background">
-        <img id="story-image" src="images/coverpage.png" alt="Story Image">
-        <p id="story-text">Join Taro the raccoon on a journey to learn about smart saving and retirement plans to make decisions that set you up for a financially free and successful future!</p>
-        <div id="choices">
-            <button onclick="updateStory('start')">Start</button>
-        </div>
-        <div id="restart" style="display: none; text-align: center;">
-            <button onclick="restartStory()">Start Over</button>
-            <button onclick="goToHome()">Back to Home</button>
+        <div id="story-container">
+            <!-- Home and Back buttons 
+            <div id="nav-buttons">
+                <img id="back-button" src="images/back.png" alt="Back">
+                <img id="home-button" src="images/home.png" alt="Home">
+            </div>
+    -->
+            <img id="story-image" src="images/coverpage.png" alt="Story Image">
+            <p id="story-text">Join Taro the raccoon on a journey to learn about smart saving and retirement plans to make decisions that set you up for a financially free and successful future!</p>
+            <div id="choices">
+                <button onclick="updateStory('start')">Start</button>
+            </div>
+            <div id="restart" style="display: none; text-align: center;">
+                <button onclick="restartStory()">Start Over</button>
+                <button onclick="goToHome()">Back to Home</button>
+            </div>
         </div>
     </div>
     <script src="scripts.js"></script>
